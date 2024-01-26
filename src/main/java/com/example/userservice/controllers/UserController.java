@@ -6,6 +6,7 @@ import com.example.userservice.services.UserService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.resource.NoResourceFoundException;
 
 import java.util.List;
 import java.util.Optional;
@@ -21,7 +22,7 @@ public class UserController {
     }
 
     @GetMapping()
-    public ResponseEntity<List<User>> getAllUsers(){
+    public ResponseEntity<List<User>> getAllUsers() throws NoResourceFoundException  {
 
         ResponseEntity<List<User>>  responseEntity =
                 new ResponseEntity<>(userService.getAllUsers(), HttpStatus.OK);
