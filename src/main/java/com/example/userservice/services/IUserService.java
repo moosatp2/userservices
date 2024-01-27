@@ -13,7 +13,7 @@ public interface IUserService {
     Optional<User> getSingleUser(Long id) throws userNotFoundException;
 
     User addNewUser(User user);
-    User updateUser(Long id, User user);
+    User updateUser(Long id, User user) throws userNotFoundException;
     void deleteUser(Long id) throws userNotFoundException;
 
 

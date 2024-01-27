@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Objects;
 import java.util.Optional;
 
 @Service
@@ -41,8 +42,36 @@ public class UserService implements IUserService {
     }
 
     @Override
-    public User updateUser(Long id, User user) {
-        return null;
+    public User updateUser(Long id, User user) throws userNotFoundException {
+
+        Optional<User> optionalUser = userRepo.findById(id);
+
+        if(optionalUser.isEmpty()){
+            throw new userNotFoundException("User not exist with id: " + id);
+        }
+
+        User savedUser = optionalUser.get();
+
+        if(user.getName() != null){
+            savedUser.setName(user.getName());
+        }
+
+        if(user.getEmail() != null){
+            savedUser.setEmail(user.getEmail());
+        }
+
+        if(user.getPassword() != null){
+            savedUser.setPassword(user.getPassword());
+        }
+
+        if(user.getAddress() != null){
+            savedUser.setAddress(user.getAddress());
+        }
+        if(user.getPhone() !=null ){
+            savedUser.setPhone(user.getPhone());
+        }
+
+        return userRepo.save(savedUser);
     }
 
     @Override

@@ -46,8 +46,10 @@ public class UserController {
     }
 
     @PatchMapping("/{id}")
-    public ResponseEntity<User> updateUser(@PathVariable("id")Long id, @RequestBody() User user){
-        return null;
+    public ResponseEntity<User> updateUser(@PathVariable("id")Long id, @RequestBody() User user) throws userNotFoundException {
+        ResponseEntity<User> userResponseEntity =
+                new ResponseEntity<>(userService.updateUser(id, user) , HttpStatus.OK);
+        return userResponseEntity;
     }
     @DeleteMapping("/{id}")
     public ResponseEntity<Void> deleteUser(@PathVariable("id")Long id) throws userNotFoundException {
