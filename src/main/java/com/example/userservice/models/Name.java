@@ -7,8 +7,8 @@ import lombok.Setter;
 
 @Getter
 @Setter
-@Entity
-public class Name extends BaseModel{
+@Embeddable
+public class Name {
 
     private String firstname;
     private String lastname;

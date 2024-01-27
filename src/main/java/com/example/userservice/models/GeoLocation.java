@@ -7,8 +7,8 @@ import lombok.Setter;
 
 @Getter
 @Setter
-@Entity
-public class GeoLocation extends BaseModel {
+@Embeddable
+public class GeoLocation{
     private String latitude;
     private String longitude;
 }

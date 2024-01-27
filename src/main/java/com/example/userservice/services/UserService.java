@@ -65,7 +65,32 @@ public class UserService implements IUserService {
         }
 
         if(user.getAddress() != null){
-            savedUser.setAddress(user.getAddress());
+            if (user.getAddress().getCity() != null) {
+                savedUser.getAddress().setCity(user.getAddress().getCity());
+            }
+
+            if (user.getAddress().getStreet() != null){
+                savedUser.getAddress().setStreet(user.getAddress().getStreet());
+            }
+            if(user.getAddress().getNumber() != 0){
+                savedUser.getAddress().setNumber(user.getAddress().getNumber());
+            }
+
+            if(user.getAddress().getZipcode() != null){
+                savedUser.getAddress().setZipcode(user.getAddress().getZipcode());
+            }
+
+            if(user.getAddress().getGeolocation() != null) {
+                if (user.getAddress().getGeolocation().getLatitude() != null) {
+                    savedUser.getAddress().getGeolocation().
+                            setLatitude(user.getAddress().getGeolocation().getLatitude());
+                }
+                if (user.getAddress().getGeolocation().getLongitude() != null) {
+                    savedUser.getAddress().getGeolocation().
+                            setLongitude(user.getAddress().getGeolocation().getLongitude());
+                }
+            }
+
         }
         if(user.getPhone() !=null ){
             savedUser.setPhone(user.getPhone());

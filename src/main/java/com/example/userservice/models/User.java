@@ -15,9 +15,10 @@ public class User extends BaseModel{
     private String email;
     private String username;
     private String password;
-    @OneToOne(cascade = CascadeType.PERSIST)
+    @Embedded
     private Name name;
-    @OneToOne(cascade = CascadeType.PERSIST)
+//    @OneToOne(cascade = CascadeType.PERSIST)
+    @Embedded
     private Address address;
     private String phone;
 
