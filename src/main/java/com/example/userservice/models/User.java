@@ -21,5 +21,6 @@ public class User extends BaseModel{
     @Embedded
     private Address address;
     private String phone;
+//    private String state; // removed to test jpa migration version
 
 }
